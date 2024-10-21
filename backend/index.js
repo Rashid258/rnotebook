@@ -14,7 +14,7 @@ app.use('/api/notes', require('./routes/notes'));
 
 
 app.get('/', (req, res)=>{
-    res.send('Welcome to iNotebook by Rashid Rafi')
+    res.send('Welcome to rNotebook by Rashid Rafi')
 });
 app.listen(port, ()=>{
     console.log(`iNotebook backend listening on localhost:${port}`);

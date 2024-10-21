@@ -1,7 +1,7 @@
 {
-  "name": "inotebook",
+  "name": "rnotebook",
   "version": "1.0.0",
-  "description": "iNotebook - A book where your notes saved on cloud",
+  "description": "rNotebook - A book where your notes saved on cloud",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,8 +9,10 @@
   "author": "Rashid Rafi",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.21.1",
     "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.1"
   },
   "devDependencies": {
