@@ -21,8 +21,9 @@ const Addnote = (props) => {
     }
 
   return (
-    <div className='container my-3'>
-        <h2>Add a Note</h2>
+    <div className='container my-3'> 
+      <h2 className='text-center'>rNotebook - Save Your Notes to Cloud</h2>
+        <h3>Add a Note</h3>
         <form>
         <div className="mb-3">
         <label htmlFor="title" className="form-label">Title</label>

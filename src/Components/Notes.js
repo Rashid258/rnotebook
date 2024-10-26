@@ -24,7 +24,6 @@ const Notes = (props) => {
     <>
     <Addnote showAlert={showAlert} />
     <div className='row my-3'>
-      <h2>rNotebook - Save Your Notes to Cloud</h2>
       <h2 className="container">Your Notes</h2>
       {notes.length === 0 && <div className="container">No Notes to display</div>}
     {notes.map((note)=>{
