@@ -4,9 +4,10 @@ import Noteitem from './Noteitem';
 import Addnote from './Addnote';
 import { useNavigate } from 'react-router-dom';
 
-const Note = () => {
+const Notes = (props) => {
   const {notes, getNotes} = useContext(noteContext);
   const navigate = useNavigate();
+  const {showAlert} = props;
 
 
   useEffect(()=>{
@@ -21,16 +22,17 @@ const Note = () => {
 
   return (
     <>
-    <Addnote/>
+    <Addnote showAlert={showAlert} />
     <div className='row my-3'>
+      <h2>rNotebook - Save Your Notes to Cloud</h2>
       <h2 className="container">Your Notes</h2>
       {notes.length === 0 && <div className="container">No Notes to display</div>}
     {notes.map((note)=>{
-      return <Noteitem key={note._id} note={note}/>
+      return <Noteitem showAlert={showAlert} key={note._id} note={note} />
         })}
     </div>
     </>
   )
 }
 
-export default Note
+export default Notes

@@ -1,14 +1,15 @@
 
 import React, { useEffect } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = (props) => {
     let location = useLocation();
     let navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        navigate('/login')
+        navigate('/login');
+        props.showAlert('Logged Out Successfully', 'success')
     }
 
     useEffect(() => {
@@ -16,6 +17,11 @@ const Navbar = () => {
             document.title = "rNotebook - Home"
         } else if (location.pathname === "/about") {
             document.title = "rNotebook - About"
+        }
+        else if (location.pathname === "/login") {
+            document.title = "rNotebook - Login"
+        } else if (location.pathname === "/signup") {
+            document.title = "rNotebook - Sign Up"
         }
     }, [location])
 
@@ -39,10 +45,18 @@ const Navbar = () => {
                     <div>
                         {!localStorage.getItem('token') ? (
                             <>
-                                <Link to="/login" className="btn btn-primary mx-2" role="button">Login</Link>
-                                <Link to="/signup" className="btn btn-primary mx-2" role="button">Sign Up</Link>
+                                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li className="nav-item">
+                                        <Link to="/login" className="btn btn-primary mx-2 mb-2" role="button">Login</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/signup" className="btn btn-primary mx-2" role="button">Sign Up</Link>
+                                    </li>
+
+                                </ul>
                             </>
                         ) : (
+                            
                             <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
                         )}
                     </div>

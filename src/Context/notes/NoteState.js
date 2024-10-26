@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 
 
-const NoteState = ({ children }) => {
+const NoteState = (props) => {
 
   const [notes, setNotes] = useState([]);
 
@@ -79,7 +79,7 @@ const NoteState = ({ children }) => {
   return (
     <div>
       <noteContext.Provider value={{ notes, addNote, deleteNote, editNote,getNotes }}>
-        {children}
+        {props.children}
       </noteContext.Provider>
     </div>
   )
