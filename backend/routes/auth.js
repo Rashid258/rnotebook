@@ -67,18 +67,21 @@ router.post('/login', [
     body('email', "enter a valid email").isEmail(),
     body('password', "Password cannot be blank").exists()
 ], async (req, res) => {
+    let success = false;
     try {
         const { email, password } = req.body;
 
         // Check whether the user with this email exists already
         let user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ error: "Please try to login with correct credentials" });
+            success = false;
+            return res.status(400).json({success, error: "Please try to login with correct credentials" });
         }
         // Compare password
         const passwordCompare = await bcrypt.compare(password, user.password);
         if (!passwordCompare) {
-            return res.status(400).json({ error: "Please try to login with correct credentials" });
+            success = false;
+            return res.status(400).json({ success, error: "Please try to login with correct credentials" });
         }
 
         //  Get data from user Id because we use id as index in mongodb
@@ -89,7 +92,8 @@ router.post('/login', [
         }
         //   Get authoToken by putting correct credientials
         const authToken = jwt.sign(data, JWT_SECRET)
-        res.json({ authToken });
+        success = true;
+        res.json({success: authToken });
          
     } catch (error) {
         console.error(error => error.message);
