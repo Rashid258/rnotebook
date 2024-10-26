@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Signup = (props) => {
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", confirmPassword: "" });
-  const [error, setError] = useState("");
   let navigate = useNavigate();
 
   // Handle form submission
@@ -66,7 +65,6 @@ const Signup = (props) => {
           <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
           <input type="password" className="form-control" value={credentials.confirmPassword} name="confirmPassword" onChange={onChange} minLength={5} required id="confirmPassword" />
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
         <button type="submit" className="btn btn-primary">Sign Up</button>
       </form>
     </div>
