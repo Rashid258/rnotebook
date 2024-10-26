@@ -18,9 +18,10 @@ const Login = () => {
         });
         const data = await res.json();
         console.log(data);
-        if(data.success === true){
+        if(data.success){
+            //Save the authToken in local storage and redirect to home page
             localStorage.setItem("token", data.authToken);
-            navigate.push('/')
+            navigate('/')
         } else{
             alert('invalid credentials.')
         }
