@@ -32,6 +32,7 @@ const Signup = (props) => {
     if (data.success) {
       // Save the authToken and navigate to home
       localStorage.setItem("token", data.authToken);
+      // eslint-disable-next-line
       navigate('/');
       props.showAlert('Account Created Successfully', 'success');
     } else {

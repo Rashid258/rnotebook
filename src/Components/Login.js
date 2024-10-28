@@ -21,6 +21,7 @@ const Login = (props) => {
     if (data.success) {
       //Save the authToken in local storage and redirect to home page
       localStorage.setItem("token", data.authToken);
+      // eslint-disable-next-line
       navigate('/');
       props.showAlert('Logged-In Successfully.', 'success')
       
